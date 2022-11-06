@@ -20,7 +20,7 @@ const Products = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/products?size=${perPageItemShow}&page=${currentPage}`
+      `https://shop-server-kappa.vercel.app/products?size=${perPageItemShow}&page=${currentPage}`
     )
       .then((res) => res.json())
       .then((data) => {

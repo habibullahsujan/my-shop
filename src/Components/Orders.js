@@ -11,7 +11,7 @@ const Orders = () => {
 
   const [cart,setCart]=useState([])
   useEffect(()=>{
-    fetch(`http://localhost:5000/cartItem?email=${user?.email}`, {
+    fetch(`https://shop-server-kappa.vercel.app/cartItem?email=${user?.email}`, {
       headers:{
         authorization: `Bearer ${localStorage.getItem('user-verify')}`
       }

@@ -5,7 +5,7 @@ const CartItem = ({item,deleteBtnHandler}) => {
 
     const handleRemoveCartItem=(id)=>{
       console.log(id);
-      fetch(`http://localhost:5000/deleteCartItem/${id}`,{
+      fetch(`https://shop-server-kappa.vercel.app/deleteCartItem/${id}`,{
         method:'DELETE',
         headers:{
           'content-type':'application/json'

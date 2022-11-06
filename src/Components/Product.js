@@ -20,7 +20,7 @@ const Product = ({ product }) => {
     };
 
     if(user?.email){
-      fetch(`http://localhost:5000/cartItem`, {
+      fetch(`https://shop-server-kappa.vercel.app/cartItem`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

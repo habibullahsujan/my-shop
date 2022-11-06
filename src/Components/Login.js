@@ -24,7 +24,7 @@ const Login = () => {
       const currentUser={
         email:user.email
       }
-      fetch('http://localhost:5000/jwt',{
+      fetch('https://shop-server-kappa.vercel.app/jwt',{
         method:'POST',
         headers:{
           'content-type':'application/json'
