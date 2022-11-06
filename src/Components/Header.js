@@ -9,6 +9,7 @@ const Header = () => {
   const handleSignOut=()=>{
     logOut()
     .then(()=>{
+      localStorage.removeItem('user-verify')
 
     })
     .then((err)=>console.error(err))

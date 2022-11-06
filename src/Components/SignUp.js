@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
+import { jwtTokens } from "../Utility/jwtToken";
 
 const SignUp = () => {
   const { createAccountUsingEmail } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        jwtTokens(user);
         navigate("/login");
       })
       .catch((error) => console.error(error));

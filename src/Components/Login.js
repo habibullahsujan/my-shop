@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 import { useLocation } from "react-router-dom";
+import { jwtTokens } from "../Utility/jwtToken";
 
 
 const Login = () => {
@@ -21,26 +22,23 @@ const Login = () => {
     .then(result=>{
       const user=result.user;
       console.log(user);
-      const currentUser={
-        email:user.email
-      }
-      fetch('https://shop-server-kappa.vercel.app/jwt',{
-        method:'POST',
-        headers:{
-          'content-type':'application/json'
-        },
-        body:JSON.stringify(currentUser)
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data);
-        localStorage.setItem('user-verify', data.token);
-        navigate(from,{replace:true})
-      })
+      jwtTokens(user);
+      navigate(from,{replace:true})
       
     })
     .catch(error=>console.error(error))
     
+  }
+  const handleGoogleSignIn =()=>{
+    signInUsingGoogle()
+    .then(result=>{
+      const user=result.user;
+      console.log(user);
+      jwtTokens(user);
+      navigate(from,{replace:true})
+      
+    })
+    .catch(error=>console.error(error))
   }
 
   return (
@@ -93,7 +91,7 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button onClick={handleGoogleSignIn} aria-label="Log in with Google" className="p-3 rounded-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
